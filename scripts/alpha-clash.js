@@ -13,7 +13,7 @@
 function continueGame(){
     // step-1: generate a random alphabet
     const alphabet = getARandomAlphabet();
-    console.log('Your alphabet is:', alphabet);
+    // console.log('Your alphabet is:', alphabet);
 
     // display randomly generated alphabet 
     const currentAlphabetElement = document.getElementById('current-alphabet');
@@ -23,8 +23,32 @@ function continueGame(){
     setBackGroundColorById(alphabet);
 }
 
+function handleKeyboardButtonPress(event){
+    const playerPressed = event.key;
+    console.log('Player pressed',playerPressed);
+
+    // get expected to press 
+    const currentAlphabetElement = document.getElementById('current-alphabet');
+    const currentAlphabet = currentAlphabetElement.innerText;
+    const expectedAlphabet = currentAlphabet.toLowerCase();
+    console.log(playerPressed, expectedAlphabet);
+
+    // check match or not 
+    if(playerPressed === expectedAlphabet){
+        console.log('you get a point');
+        console.log('you have pressed correctly', expectedAlphabet);
+        removeBackGroundColorById(expectedAlphabet);
+        continueGame();
+    }
+    else{
+        console.log('You missed. You lost a life');
+    }
+}
 
 
+
+    // capture keyboard key press 
+    document.addEventListener('keyup', handleKeyboardButtonPress)
 
 function play(){
     hideElementById('home-screen');
