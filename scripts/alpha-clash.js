@@ -36,12 +36,37 @@ function handleKeyboardButtonPress(event){
     // check match or not 
     if(playerPressed === expectedAlphabet){
         console.log('you get a point');
+
+        // score update 
+        // 1. get the current score 
+        const currentScoreElement = document.getElementById('current-score');
+        const currentScoreText = currentScoreElement.innerText;
+        const currentScore = parseInt(currentScoreText);
+        // console.log(currentScore);
+
+        // 2. increase the score by 1 
+        const newScore = currentScore + 1;
+        // 3. show the update score 
+        currentScoreElement.innerText = newScore;
+        console.log(currentAlphabetElement);
+
+        // start a new round 
         console.log('you have pressed correctly', expectedAlphabet);
         removeBackGroundColorById(expectedAlphabet);
         continueGame();
     }
     else{
         console.log('You missed. You lost a life');
+        // step-1: get the current life 
+        const currentLifeElement = document.getElementById('current-life');
+        const currentLifeText = currentLifeElement.innerText;
+        const currentLife = parseInt(currentLifeText);
+
+        // step-2: reduce the life count 
+        const newLife = currentLife - 1;
+        // step-3: display the update life count 
+        currentLifeElement.innerText = newLife;
+
     }
 }
 
