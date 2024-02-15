@@ -67,6 +67,12 @@ function handleKeyboardButtonPress(event){
         // step-3: display the update life count 
         currentLifeElement.innerText = newLife;
 
+
+        // dectect life 
+        if (newLife === 0){
+            gameOver();
+        }
+
     }
 }
 
@@ -78,5 +84,22 @@ function handleKeyboardButtonPress(event){
 function play(){
     hideElementById('home-screen');
     showElementById('play-ground');
-    continueGame()
+    continueGame();
+}
+
+
+// Game over 
+function gameOver(){
+    hideElementById('play-ground');
+    showElementById('final-score');
+}
+
+// Play Again 
+function playAgain(){
+    hideElementById('final-score');
+    showElementById('play-ground')
+
+    // reset score and life 
+    setTextElementValueById('current-life', 5);
+    setTextElementValueById('current-score', 0);
 }

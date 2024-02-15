@@ -32,3 +32,10 @@ function getARandomAlphabet(){
     // console.log(index, alphabet);
     return alphabet;
 }
+
+
+// set value 
+function setTextElementValueById(elementId, value){
+    const element = document.getElementById(elementId);
+    element.innerText = value;
+}
